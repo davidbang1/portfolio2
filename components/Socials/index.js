@@ -11,6 +11,7 @@ const Socials = ({ className }) => {
           {social.title}
         </Button>
       ))}
+      <Button key={3}>dbang908@gmail.com</Button>
     </div>
   );
 };

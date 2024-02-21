@@ -8,6 +8,8 @@ import Header from "../../components/Header";
 import data from "../../data/portfolio.json";
 import { ISOToDate, useIsomorphicLayoutEffect } from "../../utils";
 import { getAllPosts } from "../../utils/api";
+import Image from "next/image";
+
 const Blog = ({ posts }) => {
   const showBlog = useRef(data.showBlog);
   const text = useRef();
@@ -39,7 +41,7 @@ const Blog = ({ posts }) => {
         router.reload(window.location.pathname);
       });
     } else {
-      alert("This thing only works in development mode.");
+      alert("Only David can create blogs");
     }
   };
 
@@ -57,7 +59,7 @@ const Blog = ({ posts }) => {
         router.reload(window.location.pathname);
       });
     } else {
-      alert("This thing only works in development mode.");
+      alert("Only David can delete blogs");
     }
   };
   return (
@@ -67,6 +69,8 @@ const Blog = ({ posts }) => {
         <Head>
           <title>Blog</title>
         </Head>
+        <div className="gradient-circle"></div>
+
         <div
           className={`container mx-auto mb-10 ${
             data.showCursor && "cursor-none"
@@ -76,9 +80,9 @@ const Blog = ({ posts }) => {
           <div className="mt-10">
             <h1
               ref={text}
-              className="mx-auto mob:p-2 text-bold text-6xl laptop:text-8xl w-full"
+              className="mx-auto mob:p-2 text-bold text-3xl laptop:text-4xl w-full"
             >
-              Blog.
+              Book Reviews!
             </h1>
             <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
               {posts &&
@@ -88,11 +92,12 @@ const Blog = ({ posts }) => {
                     key={post.slug}
                     onClick={() => Router.push(`/blog/${post.slug}`)}
                   >
-                    <img
-                      className="w-full h-60 rounded-lg shadow-lg object-cover"
-                      src={post.image}
+                    <Image
+                      src={"/../public/images/" + post.image + ".jpg"}
+                      width={400}
+                      height={400}
                       alt={post.title}
-                    ></img>
+                    />
                     <h2 className="mt-5 text-4xl">{post.title}</h2>
                     <p className="mt-2 opacity-50 text-lg">{post.preview}</p>
                     <span className="text-sm mt-5 opacity-25">

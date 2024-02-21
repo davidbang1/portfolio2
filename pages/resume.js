@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Cursor from "../components/Cursor";
 import Header from "../components/Header";
 import ProjectResume from "../components/ProjectResume";
@@ -24,6 +25,9 @@ const Resume = () => {
   }, []);
   return (
     <>
+      <Head>
+        <title>{"Resume"}</title>
+      </Head>
       {process.env.NODE_ENV === "development" && (
         <div className="fixed bottom-6 right-6">
           <Button onClick={() => router.push("/edit")} type={"primary"}>
@@ -37,6 +41,8 @@ const Resume = () => {
           data.showCursor && "cursor-none"
         }`}
       >
+        <div className="gradient-circle"></div>
+
         <Header isBlog />
         {mount && (
           <div className="mt-10 w-full flex flex-col items-center">
@@ -71,18 +77,27 @@ const Resume = () => {
               <div className="mt-5">
                 <h1 className="text-2xl font-bold">Education</h1>
                 <div className="mt-2">
-                  <h2 className="text-lg">{resume.education.universityName}</h2>
-                  <h3 className="text-sm opacity-75">
-                    {resume.education.universityDate}
-                  </h3>
-                  <p className="text-sm mt-2 opacity-50">
-                    {resume.education.universityPara}
-                  </p>
+                  {resume.education.map((x, i) => {
+                    return (
+                      <>
+                        <h2 className="text-lg">{x.universityName}</h2>
+                        <h3 className="text-sm opacity-75">
+                          {x.universityDate}
+                        </h3>
+                        <p className="text-sm mt-2 opacity-50">
+                          {x.universityPara}
+                        </p>
+                      </>
+                    );
+                  })}
                 </div>
               </div>
               <div className="mt-5">
                 <h1 className="text-2xl font-bold">Skills</h1>
-                <div className="flex mob:flex-col desktop:flex-row justify-between">
+                <div
+                  className="flex mob:flex-col desktop:flex-row justify-between"
+                  style={{ float: "left", width: "50%" }}
+                >
                   {resume.languages && (
                     <div className="mt-2 mob:mt-5">
                       <h2 className="text-lg">Languages</h2>
@@ -95,7 +110,8 @@ const Resume = () => {
                       </ul>
                     </div>
                   )}
-
+                </div>
+                <div className="flex mob:flex-col desktop:flex-row justify-between">
                   {resume.frameworks && (
                     <div className="mt-2 mob:mt-5">
                       <h2 className="text-lg">Frameworks</h2>
