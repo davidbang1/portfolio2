@@ -36,7 +36,6 @@ const BlogPost = ({ post }) => {
         }`}
       >
         <Header isBlog={true} />
-        <div>helloooooo</div>
         <div style={{ float: "right" }}>
           <Image
             src={"/images/" + post.image + ".jpg"}
