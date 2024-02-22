@@ -16,7 +16,7 @@ const WorkCard = ({ img, name, description, onClick }) => {
           width={400}
           height={400}
           className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
-          src={"/../public/images/" + img}
+          src={"/images/" + img}
           style={{ cursor: "pointer" }}
         ></Image>
       </div>
