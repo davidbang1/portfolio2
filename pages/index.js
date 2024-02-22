@@ -81,7 +81,7 @@ export default function Home() {
               </h1>
             </div>
             <Image
-              src="/../public/images/profile.jpeg"
+              src="/public/images/profile.jpeg"
               width={400}
               height={400}
               alt="Picture of David Bang"
