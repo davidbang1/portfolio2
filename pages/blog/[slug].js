@@ -36,9 +36,10 @@ const BlogPost = ({ post }) => {
         }`}
       >
         <Header isBlog={true} />
+        <div>helloooooo</div>
         <div style={{ float: "right" }}>
           <Image
-            src={"/../public/images/" + post.image + ".jpg"}
+            src={"/images/" + post.image + ".jpg"}
             width={400}
             height={400}
             alt={post.title}
