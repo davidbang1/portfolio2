@@ -81,7 +81,7 @@ export default function Home() {
               </h1>
             </div>
             <Image
-              src="/public/images/profile.jpeg"
+              src="/images/profile.jpeg"
               width={400}
               height={400}
               alt="Picture of David Bang"
@@ -101,7 +101,9 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-10 laptop:mt-10 p-2 laptop:p-0">
-          <h1 className="tablet:m-10 text-2xl text-bold">My skills include:</h1>
+          <h1 className="tablet:m-10 text-2xl text-bold">
+            testMy skills include:
+          </h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
             {data.services.map((service, index) => (
               <ServiceCard
